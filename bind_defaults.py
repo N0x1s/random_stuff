@@ -23,7 +23,7 @@ class Signature(inspect.Signature):
 
 				 Methods
 				 -------
-				 
+
 				 	bind_with_defaults(*args, **kwargs):
 					 	bind args and kwargs to signature with default support
 
@@ -37,7 +37,7 @@ class Signature(inspect.Signature):
 		"""bind args and kwargs to signature with default args support"""
 		args = super().bind_partial(*args, **kwargs).arguments
 		args.update({elem: self.defaults[elem] if elem in self.defaults else self.default
-							for elem in sig.parameters if elem not in args})
+							for elem in self.parameters if elem not in args})
 		return super().bind(**args)
 
 _fields = ('age', 'hobbies')
