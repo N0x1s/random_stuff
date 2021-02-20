@@ -10,12 +10,12 @@ def annotation_check(func):
 				for item, value in _sig.parameters.items()
 		):
 			raise TypeError("Provided arguments doesn't match the annotation")
-		return method(*args, **kwargs)
+		return func(*args, **kwargs)
 	return wrapper
 
 @annotation_check
 def hello(name: str, age: int):
-	return f'hello {name}'
+  	return f'hello {name}' if age <= 100 else 'hello ghost'
 
 demos = (
 	('name', 42),
