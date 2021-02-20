@@ -1,8 +1,7 @@
 from inspect import Signature
-import functools
 
-def annotation_check(method):
-	_sig = Signature.from_callable(method)
+def annotation_check(func):
+	_sig = Signature.from_callable(func)
 	def wrapper(*args, **kwargs):
 		nonlocal _sig
 		bond = _sig.bind(*args, **kwargs)
